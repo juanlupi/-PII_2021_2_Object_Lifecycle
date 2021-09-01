@@ -25,6 +25,30 @@ namespace ClassLibrary
         /// <returns>
         /// <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
         /// </returns>
+        
+        private static int count = 0;
+
+        private string id;
+
+        public string Id {get;set;}
+        public static int Count
+        {
+            get{return Train.count;}
+           
+            private set{Train.count = value;}
+        }
+
+        public Train(string id)
+        {
+            this.id = id;
+            
+            count++;
+        }
+
+        ~Train()
+        {
+            count--;
+        }
         public bool StartEngines()
         {
             if (this.IsEngineStarted)
